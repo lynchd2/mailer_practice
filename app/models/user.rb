@@ -3,7 +3,9 @@ class User < ActiveRecord::Base
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-  # def s3_credentials
-  #   {:bucket => "#{Rails.application.secrets.BUCKET}", :access_key_id => "#{Rails.application.secrets.ACCESS_KEY_ID}", :secret_access_key => "#{Rails.application.secrets.SECRET_ACCESS_KEY}"}
-  # end
+  # after_create :welcome_email
+
+  def welcome_email
+    UserMailer.welcome(self).deliver!
+  end
 end
