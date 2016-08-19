@@ -1,4 +1,1 @@
-assignment_photos
-=================
-
-Cheese!
+# mailer_practice

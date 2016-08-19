@@ -3,9 +3,13 @@ class User < ActiveRecord::Base
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-  after_create :welcome_email
-
-  def welcome_email
-    UserMailer.welcome(self).deliver!
+  after_create do 
+    welcome_email(self.id)
   end
+
+  def self.welcome_email(whatever)
+    user = User.find_by_id(whatever)
+    UserMailer.welcome(user).deliver!
+  end
+  handle_asynchronously :welcome_email
 end
