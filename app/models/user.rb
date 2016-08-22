@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   def welcome_email(whatever)
     user = User.find_by_id(whatever)
-    UserMailer.welcome(user).deliver!
+    UserMailer.delay(run_at: 5.minutes.from_now).welcome(user).deliver!
   end
   # handle_asynchronously :welcome_email
 end
