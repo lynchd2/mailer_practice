@@ -106,6 +106,6 @@ Rails.application.configure do
   # Rails also needs to know where your app is
   #   located to properly configure sending of emails
   config.action_mailer.default_url_options = {
-    :host => 'www.putyourdomainhere.com',
+    :host => 'https://serene-wave-99453.herokuapp.com/',
   }
 end
